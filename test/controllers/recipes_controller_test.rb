@@ -3,34 +3,39 @@ require 'test_helper'
 
 class RecipesControllerTest < ActionDispatch::IntegrationTest
   
-  @test_recipe_params = {
-  title: "I am a test",
-  body: "I'm pretty empty for a recipe", 
-  time_estimate: "forever"
-}
-
-
-test "should post create" do
-  recipe = Recipe.create(@test_recipe_params)
-  assert_response :success
-end
-
-test "should put update" do
-  put recipe_path(:id)
-  assert_response :success
-end
-
-test "should delete destroy" do
-  delete recipe_path(:id)
-  assert_response :success
-end
-
-test "should get index" do
-  get recipes_path
-  assert_response :success
-  assert_not_nil assigns(:recipes)
+  
+  # tests routes
+  
+  test "should get index" do
+    assert_generates '/recipes', {controller: 'recipes', action: 'index'}
+  end
+  
+  test "should post create" do
+    assert_recognizes({controller: 'recipes', action: 'create'}, {path: 'recipe', method: :post})
+  end
+  
+  test "should show recipe" do
+    assert_generates '/recipe/id', {controller: 'recipes', action: 'show'}
+  end
+  
+  test "should get single recipe" do
+    assert_generates '/recipe/id', {controller: 'recipes', action: 'edit'}
+  end
   
   
-end
-
+  test "should put update" do
+    assert_recognizes({controller: 'recipes', action: 'update'}, {path: 'recipe/id', method: :put})
+  end
+  
+  test "should delete destroy" do
+    assert_recognizes({controller: 'recipes', action: 'destroy'}, {path: 'recipe/id', method: :delete})
+  end
+  
+  
+  
+  
+  
+  
+  
+  
 end
