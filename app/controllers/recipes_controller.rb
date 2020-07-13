@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
-  def create(recipe_params)
-    Recipe.create(params[:recipe])
+  def create
+    @recipe = Recipe.new(params[:recipe])
+    @recipe.save
   end
   
   def update(recipe_params)
@@ -16,10 +17,10 @@ class RecipesController < ApplicationController
   end
   
   
-  private
-  def recipe_params
-    params.require(:recipe).permit(:id, :title, :body, :time_estimate)
-  end
+  # private
+  # def recipe_params
+  #   params.require(:recipe).permit(:id, :title, :body, :time_estimate)
+  # end
   
   
 end
