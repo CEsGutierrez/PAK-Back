@@ -1,0 +1,2 @@
+class ProceduralStep < ApplicationRecord
+end
