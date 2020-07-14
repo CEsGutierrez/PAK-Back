@@ -4,7 +4,8 @@ class RecipesController < ApplicationController
   def index()
   end
   
-  
+    # aside: 
+  # if category name isn't in uppercase (for some reason) change it to upercase before saving it if that's at all possible 
   def create()
     @recipe = Recipe.new(params[:recipe])
     @recipe.save

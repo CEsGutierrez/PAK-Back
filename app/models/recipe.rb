@@ -7,8 +7,8 @@ class Recipe < ApplicationRecord
   # title (string, non-empty, unique to all recipes)
   # time_estimate (string, non-empty)
   # description (string, non-empty)
-  # ingredients (array)
-  # procedural_steps (array)
+  # ingredients (array, at least 1 thing)
+  # procedural_steps (array, at least 1 thing)
   # category_id (number)
   # main/side (boolean)
   
