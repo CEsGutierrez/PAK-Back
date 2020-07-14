@@ -18,8 +18,9 @@
 #@recipe.save
 
 
-category = Category.create
-puts "category is saved"
+category = Category.create(
+  name: "Peanut Butter Cookies"
+)
 
 recipe = Recipe.create(
   title: "Test Recipe 1",
