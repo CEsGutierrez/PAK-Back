@@ -3,15 +3,14 @@ class Recipe < ApplicationRecord
   has_many :ingredients
   has_many :procedural_steps
   
-  # requires: 
-  # title (string, non-empty, unique to all recipes)
-  # time_estimate (string, non-empty)
-  # description (string, non-empty)
-  # ingredients (array, at least 1 thing)
-  # procedural_steps (array, at least 1 thing)
-  # category_id (number)
-  # main/side (boolean)
+  validates :title, presence: true, uniqueness: true
+  validates :time_estimate, presence: true
+  validates :description, presence: true
   
-  # optional: 
-  # equipment (string) // special equipment for things like propane torch that people may not have laying around
+  validates_inclusion_of :main, in:[true, false]
+  
+  
+  # category_id validation is not necessary as it is already required a foreign key
+  
+  # equipment validation skipped as is not actually necessary and this element is optional
 end

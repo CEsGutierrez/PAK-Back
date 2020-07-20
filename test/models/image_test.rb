@@ -1,33 +1,37 @@
 require 'test_helper'
 
 class ImageTest < ActiveSupport::TestCase
-  test "valid image" do
-    # get recipe 1
+  
+  test "valid image for step" do
+    test_image = Image.new
     
-    # create new image with ingredient_id and no procedural_step_id
-    # also has unique display_name
-    # number of images associated with recipe increases
-    
-    # create new image with procedural_step_id and no ingredient_id
-    # also has unique display_name
-    # number of images associated with recipe increases
-    
+
+
+
+
+    # assign image to recipe 1, step 1
+    # count increases
+  end
+
+  test "valid image for ingredient" do
+    # assign image to recipe 1, ingredient 1
+    # count increases
   end
   
-  test "invalid: association is missing" do
-    # create new image without procedural_step_id or ingredient_id
-    # has unique display_name
-    # number of images associated with recipe stays the same
+  
+  test "invalid image, step or ingredient missing" do
+    # add image with missing step
+    # count doesn't change
+
+    # add image with missing ingredient
+    # count doens't change
+  end
+
+  test "invalid image, duplicate name in same recipe" do
+  end
+
+  test "valid image, duplicate name in different recipe" do
   end
   
-  test "invalid: missing or duplicate display name" do
-    # create valid image associated to an ingredient_id
-    # create image with same name associated with same recipe but with procedural_step_id and duplicate the first ingredient's name
-    ##### INVALID: SAME RECIPE, DIFFERENT ASSOCIATION, SAME NAME 
-    # number of images associated with recipe stays the same
-    
-    #  try to create recipe without display name
-    #  number of images associated with recipe stays the same
-  end
   
 end

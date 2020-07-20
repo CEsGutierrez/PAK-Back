@@ -1,14 +1,12 @@
 class Ingredient < ApplicationRecord
   belongs_to :recipe
-
-
-# requires
-  # amount
-  # unit
-  # name (# unique to other ingredients already associated with this recipe)
-  # recipe_id (number)
-
-# optional
+  has_one :images, as: :imageable
+  
+  validates :name, presence: true, uniqueness: {scope: :recipe_id}
+  validates :amount, presence: true
+  validates :unit, presence: true
+  
+  # optional
   # sub note
-
+  
 end

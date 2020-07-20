@@ -2,23 +2,30 @@ require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
   
-  test "category requires a name (valid)" do
-    #   create a valid category
-    #   check that catgory numbers increases
+  test "adds valid categories" do
+    assert_equal(4, Category.count)
+    
+    test_cat = Category.new
+    test_cat.name = "I am a totally new category"
+    test_cat.save
+    assert_equal(5, Category.count)
+    
   end
   
   test "invalid names" do
-    #   try to create a category without a name
-    #   number of categories does not increase
-
-    # create a valid category
-    # number of categories increases
-
-    # try to create category with exact same name
-    # number of categories doesn't increase
-
-    # try to create category with similar name but extra space
-    #number of categories doesn't increase 
+    
+    # category needs a name
+    assert_no_difference 'Category.count' do
+      test_category = Category.create
+    end
+    
+    
+    # category name must be unique
+    assert_no_difference 'Category.count' do
+      test_cat_2 = Category.new
+      test_cat_2.name = Category.first.name
+      test_cat_2.save
+    end  
   end
   
 end

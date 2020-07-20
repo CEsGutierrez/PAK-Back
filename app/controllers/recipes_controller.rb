@@ -4,10 +4,26 @@ class RecipesController < ApplicationController
   def index()
   end
   
-    # aside: 
-  # if category name isn't in uppercase (for some reason) change it to upercase before saving it if that's at all possible 
   def create()
+
     @recipe = Recipe.new(params[:recipe])
+
+  # if missing procedural steps, or ingredients, return error
+
+  # if category is included, create that first
+    # make sure it's in uppercase
+    # make sure the name's been stripped
+
+  # recipe.create
+
+  # call in the recipe.id from the newly created recipe to  stand in for the foreign key for ingredients and procedural steps
+
+  # proceduralstep(s).create
+
+  # ingredient(s).create
+
+  # image(s).create
+
     @recipe.save
   end
   

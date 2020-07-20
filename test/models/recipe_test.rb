@@ -1,66 +1,93 @@
 require 'test_helper'
 
 class RecipeTest < ActiveSupport::TestCase
-
+  
+  
+  #TODO: tests are not able to access method in test file, test_helper, setup method, or instance creation. For the moment, I am setting this aside. 
+  
   test "valid recipe" do
-    # valid title
-    # valid time_estimate
-    # valid description
-    # valid ingredients (array w/ one ingredient)
-    # valid procedural_steps(array w/ one procedural step)
-    # valid category_id
-    # Valid main/side (false)
-    # number of recipes increases
+    assert_equal(6, Recipe.count)
+    
+    test_recipe = Recipe.new
+    test_recipe.title = "safron rice"
+    test_recipe.time_estimate = "30 min"
+    test_recipe.description = "safron rice"
+    test_recipe.main = false
+    test_recipe.category_id = Category.first.id
+    test_recipe.save
+    
+    assert_equal(7, Recipe.count)
   end
-
+  
   test "invalid: missing or duplicate title " do
-    # try to add recipe with everything EXCEPT a title
-    # number of recipes doesn't increase 
-
-    # get name of first recipe (yaml)
-    # try to add recipe with same name
-    # number of recipes doesn't increase 
+    
+    test_recipe = Recipe.new
+    test_recipe.time_estimate = "30 min"
+    test_recipe.description = "safron rice"
+    test_recipe.main = false
+    test_recipe.category_id = Category.first.id
+    
+    assert_no_difference 'Recipe.count' do
+      test_recipe.save
+    end
+    
+    assert_no_difference 'Recipe.count' do
+      test_recipe.title = Recipe.first.title
+      test_recipe.save
+    end
   end
-
+  
   test "invalid: missing time_estimate" do
-    # try to add recipe with everything EXCEPT a time_estimate
-    # number of recipes doesn't increase 
+    assert_no_difference 'Recipe.count' do
+      test_recipe = Recipe.new
+      test_recipe.title = "safron rice"
+      test_recipe.description = "safron rice"
+      test_recipe.main = false
+      test_recipe.category_id = Category.first.id
+      test_recipe.save
+    end
   end
-
+  
   test "invalid: missing description" do
-    # try to add recipe with everything EXCEPT a description
-    # number of recipes doesn't increase 
+    assert_no_difference 'Recipe.count' do
+      test_recipe = Recipe.new
+      test_recipe.time_estimate = "30 min"
+      test_recipe.title = "safron rice"
+      test_recipe.description = ""
+      test_recipe.main = false
+      test_recipe.category_id = Category.first.id
+      test_recipe.save
+    end
   end
-
-  test "invalid: missing ingredients list" do
-    # try to add recipe with everything EXCEPT an ingredients array
-    # number of recipes doesn't increase 
-
-    # try to add recipe with empty ingredients array
-    # number of recipes doesn't increase
-  end
-
-  test "invalid: missing procedural_steps list" do
-    # try to add recipe with everything EXCEPT a procedural_steps array
-    # number of recipes doesn't increase 
-
-    # try to add recipe with empty procedural_steps array
-    # number of recipes doesn't increase
-  end
-
-  test "invalid: missing category_id" do
-    # try to add recipe with everything EXCEPT a category_id
-    # number of recipes doesn't increase 
-  end
-
+  
   test "invalid: missing main/side boolean" do
-    # try to add recipe with everything EXCEPT a main/side boolean
-    # number of recipes doesn't increase 
+    test_recipe = Recipe.new
+    test_recipe.title = "safron rice"
+    test_recipe.time_estimate = "30 min"
+    test_recipe.description = "safron rice"
+    test_recipe.category_id = Category.first.id
+    
+    assert_no_difference 'Recipe.count' do
+      test_recipe.save
+    end
+    
+    assert_no_difference 'Recipe.count' do
+      test_recipe.main = nil
+      test_recipe.save
+    end
+    
   end
-
+  
   test "valid: with special equipemnt" do
-    # try to add recipe with special equipment
-    # number of recipes increases 
+    test_recipe = Recipe.new
+    test_recipe.title = "safron rice"
+    test_recipe.time_estimate = "30 min"
+    test_recipe.description = "safron rice"
+    test_recipe.category_id = Category.first.id
+    test_recipe.main = true
+    test_recipe.equipment = "hand mixer"
+    
+    test_recipe.save
+    assert_equal(7, Recipe.count)
   end
-
 end

@@ -27,7 +27,7 @@ recipe = Recipe.create(
   time_estimate: "30 min",
   description: "Peanut butter cookies!", 
   main: true,
-  category: Category.first
+  category_id: Category.first.id
 )
 
 ingredient1 = Ingredient.create(

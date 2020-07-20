@@ -4,8 +4,14 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+cat_one: 
+  name: coffee
+
+cat_two: 
+  name: oatmeal cookies
+
+cat_three: 
+  name: butter chicken
+
+cat_four: 
+  name: peanut butter cookies

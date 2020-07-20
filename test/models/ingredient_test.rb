@@ -2,47 +2,126 @@ require 'test_helper'
 
 class IngredientTest < ActiveSupport::TestCase
   test "valid ingredient" do
-    # create a valid ingredient
-    # number of ingredients for that recipe increases
+    assert_equal(10, Ingredient.count)
+    
+    expected_ingredients = Ingredient.count + 1
+    
+    test_ingredient = Ingredient.new
+    test_ingredient.amount = "2"
+    test_ingredient.unit = "tsp"
+    test_ingredient.name = "pepper"
+    test_ingredient.recipe_id = Recipe.first.id
+    test_ingredient.save
+    
+    assert_equal(expected_ingredients, Ingredient.count)
+    
   end
-
+  
   test "invalid: missing amount" do
-    # create ingredient with everything EXCEPT amount
-    # number of ingredients for that recipe stays the same
+    assert_no_difference 'Ingredient.count' do
+      test_ingredient = Ingredient.new
+      test_ingredient.unit = "tsp"
+      test_ingredient.name = "pepper"
+      test_ingredient.recipe_id = Recipe.first.id
+      test_ingredient.save
+    end
   end
-
+  
   test "invalid: missing unit" do
-    # create ingredient with everything EXCEPT unit
-    # number of ingredients for that recipe stays the same
+    assert_no_difference 'Ingredient.count' do
+      test_ingredient = Ingredient.new
+      test_ingredient.amount = "2"
+      test_ingredient.name = "pepper"
+      test_ingredient.recipe_id = Recipe.first.id
+      test_ingredient.save
+    end
+    
+    assert_no_difference 'Ingredient.count' do
+      test_ingredient = Ingredient.new
+      test_ingredient.amount = "2"
+      test_ingredient.unit = ""
+      test_ingredient.name = "pepper"
+      test_ingredient.recipe_id = Recipe.first.id
+      test_ingredient.save
+    end
   end
-
+  
   test "invalid: missing name" do
-    # create ingredient with everything EXCEPT name
-    # number of ingredients for that recipe stays the same
+    assert_no_difference 'Ingredient.count' do
+      test_ingredient = Ingredient.new
+      test_ingredient.amount = "2"
+      test_ingredient.unit = "cups"
+      test_ingredient.recipe_id = Recipe.first.id
+      test_ingredient.save
+    end
+    
+    assert_no_difference 'Ingredient.count' do
+      test_ingredient = Ingredient.new
+      test_ingredient.amount = "2"
+      test_ingredient.unit = "cups"
+      test_ingredient.name = ""
+      test_ingredient.recipe_id = Recipe.first.id
+      test_ingredient.save
+    end
   end
-
-  test "invalid: missing recipe_id" do
-    # create ingredient with everything EXCEPT recipe_id
-    # total number of ingredients stays the same
-  end
-
+  
   test "invalid: duplicate name for recipe" do
-    # get name of first ingredient for first recipe
-    # add duplicate ingredient to first recipe
-    # number of ingredients for that recipe stays the same
+    test_ingredient = Ingredient.new
+    test_ingredient.amount = "2"
+    test_ingredient.unit = "tsp"
+    test_ingredient.name = "pepper"
+    test_ingredient.recipe_id = Recipe.first.id
+    test_ingredient.save
+    
+    assert_no_difference 'Ingredient.count' do
+      test_ingredient = Ingredient.new
+      test_ingredient.amount = "2"
+      test_ingredient.unit = "tsp"
+      test_ingredient.name = "pepper"
+      test_ingredient.recipe_id = Recipe.first.id
+      test_ingredient.save
+    end
+    
   end
-
+  
   test "valid: duplicate ingredient to other recipe is allowed" do
-    # create new recipe (1)
-    # create new ingredient for recipe
-    # create new recipe (2) with new name
-    # duplicate ingredient from recipe (1)
-    # number of ingredients for recipe (2) increases
+    
+    duplicate_name = "ice water"
+    
+    org_ingredient = Ingredient.new
+    org_ingredient.amount = "5"
+    org_ingredient.unit = "tsp"
+    org_ingredient.name = duplicate_name
+    org_ingredient.recipe_id = Recipe.first.id
+    org_ingredient.save
+    
+    current_ingredients = Ingredient.count
+    
+    expected_ingredients = current_ingredients + 1
+    
+    test_ingredient = Ingredient.new
+    test_ingredient.amount = "2"
+    test_ingredient.unit = "tsp"
+    test_ingredient.name = duplicate_name
+    test_ingredient.recipe_id = Recipe.last.id
+    test_ingredient.save
+    assert_equal(expected_ingredients, Ingredient.count)
   end
-
-
+  
+  
   test "valid: sub_note allowed" do
-    # create valid ingredient, includes sub_note
-    # number of ingredients increases
+    current_ingredients = Ingredient.count
+    expected_ingredients = current_ingredients + 1
+    
+    test_ingredient = Ingredient.new
+    test_ingredient.amount = "2"
+    test_ingredient.unit = "tsp"
+    test_ingredient.name = "black pepper"
+    test_ingredient.recipe_id = Recipe.first.id
+    test_ingredient.sub_note = "1 tsp white pepper"
+    test_ingredient.save
+    
+    assert_equal(expected_ingredients, Ingredient.count)
+    
   end
 end

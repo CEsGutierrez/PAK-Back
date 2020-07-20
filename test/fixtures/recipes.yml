@@ -1,11 +1,45 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+recipe_one: 
+  title: oatmeal cookies
+  time_estimate: 30 min
+  description: fictional oatmeal cookies that I don't actually know how to make
+  main: false
+  category_id: cat_two
+
+recipe_two: 
+  title: peanut butter cookies
+  time_estimate: 40 min
+  description: fictional oatmeal cookies that I don't actually know how to make
+  main: false
+  category_id: cat_four
+  equipment: oven
+
+recipe_three:
+  title: whipped cooffee
+  time_estimate: 5 min
+  description: whipped coffee, served cold
+  main: false
+  category_id: cat_one
+  equipment: hand mixer
+
+recipe_four: 
+  title: butter chicken
+  time_estimate: 30 min
+  description: quick butter chicken
+  main: true
+  category_id: cat_three
+
+recipe_five: 
+  title: garlic butter
+  time_estimate: 3 min
+  description: quick garlic butter
+  main: false
+  category_id: cat_three
+
+recipe_six: 
+  title: sauteed zucchini
+  time_estimate: 10 min
+  description: quick zucchini cook
+  main: false
+  category_id: cat_three

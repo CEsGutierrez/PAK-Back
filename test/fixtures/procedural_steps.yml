@@ -1,11 +1,58 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+
+step_one: 
+  step_number: 1
+  description: crack eggs into mixing bowl
+  recipe_id: recipe_one
+
+step_two:
+  step_number: 2
+  description: beat eggs until mixed
+  sub_note: use fork, whisk or equivalent
+  recipe_id: recipe_two
+
+step_three:
+  step_number: 1.1
+  description: add coffee to hot water in small bowl
+  recipe_id: recipe_three
+
+step_four:
+  step_number: 1.2
+  description: mix coffee using electric whisk
+  sub_note: if whisk attachment to hand mixer is not available, use normal mixer attachment, note, will get messy
+  recipe_id: recipe_three
+
+step_five:
+  step_number: 1
+  description: cut chicken into 1 to 1/2 inch cubes
+  sub_note: does not have to be perfect, smaller pieces will cook faster
+  recipe_id: recipe_four
+
+step_six:
+  step_number: 2
+  description: add chicken to oil
+  sub_note: the chicken cooking time will be rate-determining for entire dish
+  recipe_id: recipe_four
+
+step_seven:
+  step_number: 3
+  description: chop onion
+  recipe_id: recipe_four
+
+step_eight:
+  step_number: 4
+  description: prepare ginger
+  sub_note: skip if using ginger paste or ginger powder
+  recipe_id: recipe_four
+
+step_nine:
+  step_number: 1
+  description: soften butter
+  recipe_id: recipe_five
+
+step_ten:
+  step_number: 3
+  description: cook zucchini, uncovered, stirring approximately every 2 minutes until inner pod is transluscent
+  sub_note: this may take longer with larger pieces
+  recipe_id: recipe_six

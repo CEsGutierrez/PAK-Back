@@ -1,11 +1,62 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+
+ing_one: 
+  amount: 1
+  unit: cup
+  name: smooth peanut butter
+  recipe_id: recipe_one
+
+ing_two: 
+  amount: 1
+  unit: whole
+  name: egg
+  recipe_id: recipe_two
+
+ing_three:
+  amount: 2
+  unit: tbsp
+  name: instant coffee
+  recipe_id: recipe_three
+
+ing_four: 
+  amount: 2
+  unit: tbsp
+  name: hot water
+  recipe_id: recipe_three
+
+ing_five: 
+  amount: 1
+  unit: c
+  name: soy milk
+  recipe_id: recipe_three
+
+ing_six:
+  amount: 4
+  unit: ounces
+  name: tomato paste
+  recipe_id: recipe_four
+
+ing_seven:
+  amount: 8
+  unit: fluid ounces
+  name: whipping cream
+  recipe_id: recipe_four
+
+ing_eight: 
+  amount: 1
+  unit: tbsp
+  name: roasted garlic
+  recipe_id: recipe_five
+
+ing_nine:
+  amount: 1
+  unit: tbsp
+  name: sour cream
+  recipe_id: recipe_six
+
+ing_ten:
+  amount: 2
+  unit: whole
+  name: zucchini
+  recipe_id: recipe_six
