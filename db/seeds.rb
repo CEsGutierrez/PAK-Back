@@ -6,16 +6,42 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# create category
-# recipe.new
-# category (@category equiv)
-# main (bool)
-# ingredients = []
 
-# create 2 incredients, associate with (@recipe equiv)
-# create 2 procedural steps, associate with (@recipe equiv)
+# the following placeholders are being used to account for missing fields in images, do not delete. ID is really intended to bo "0" for all in order to not have overwriting of data 
+placeholder_category = Category.create(
+  name: "placeholder"
+  id: 0
+)
 
-#@recipe.save
+placeholder_recipe = Recipe.create(
+  title: "placeholder"
+  time_estimate: "none"
+  description: "none"
+  main: false
+  category_id: placeholder_category.id
+  id: 0
+)
+
+placeholder_ingredient = Ingredient.create(
+  amount: "none"
+  unit: "none"
+  name: "none"
+  recipe_id: placeholder_recipe.id
+  id: 0
+)
+
+placeholder_procedural_step = ProceduralStep.create(
+  recipe_id: placeholder_recipe.id
+  step_number: "0"
+  description: "placeholder"
+  id: 0
+)
+
+
+
+
+
+
 
 
 category = Category.create(

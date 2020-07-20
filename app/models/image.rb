@@ -1,10 +1,9 @@
 class Image < ApplicationRecord
-  belongs_to :imageable, polymorphic: true
-
-
+  belongs_to :ingredient
+  belongs_to :procedural_step
   
-# requires:
-# EITHER ingredient_id OR procedural_step_id
-# display_name (string, unique from other names associated with this recipe)
-
+  # requires:
+  # EITHER ingredient_id OR procedural_step_id
+  # display_name (string, unique from other names associated with this recipe)
+  
 end
