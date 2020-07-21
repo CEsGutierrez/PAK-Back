@@ -1,18 +1,18 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 
-image_one:
-  procedural_step_id: step_six
-  display_name: chicken added first
+# image_one:
+#   procedural_step_id: step_six
+#   display_name: chicken added first
 
-image_two:
-  procedural_step_id: step_ten
-  display_name: raw and cooked zucchini
+# image_two:
+#   procedural_step_id: step_ten
+#   display_name: raw and cooked zucchini
 
-image_three:
-  ingredient_id: ing_eight
-  display_name: roasted garlic
+# image_three:
+#   ingredient_id: ing_eight
+#   display_name: roasted garlic
 
-image_four:
-  ingredient_id: ing_six
-  display_name: tomato paste
+# image_four:
+#   ingredient_id: ing_six
+#   display_name: tomato paste

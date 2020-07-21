@@ -8,41 +8,33 @@
 
 
 # the following placeholders are being used to account for missing fields in images, do not delete. ID is really intended to bo "0" for all in order to not have overwriting of data 
-placeholder_category = Category.create(
-  name: "placeholder"
-  id: 0
-)
+placeholder_category = Category.new
+placeholder_category.name = "placeholder"
+placeholder_category.id = 0
+placeholder_category.save
 
-placeholder_recipe = Recipe.create(
-  title: "placeholder"
-  time_estimate: "none"
-  description: "none"
-  main: false
-  category_id: placeholder_category.id
-  id: 0
-)
+placeholder_recipe = Recipe.new
+placeholder_recipe.title = "placeholder"
+placeholder_recipe.time_estimate = "none"
+placeholder_recipe.description =  "none"
+placeholder_recipe.main =  false
+placeholder_recipe.category_id =  placeholder_category.id
+placeholder_recipe.id =  0
+placeholder_recipe.save
 
-placeholder_ingredient = Ingredient.create(
-  amount: "none"
-  unit: "none"
-  name: "none"
-  recipe_id: placeholder_recipe.id
-  id: 0
-)
+placeholder_ingredient = Ingredient.new
+placeholder_ingredient.amount = "none",
+placeholder_ingredient.unit = "none",
+placeholder_ingredient.name = "none",
+placeholder_ingredient.recipe_id = placeholder_recipe.id,
+placeholder_ingredient.id = 0
+placeholder_ingredient.save
 
-placeholder_procedural_step = ProceduralStep.create(
-  recipe_id: placeholder_recipe.id
-  step_number: "0"
-  description: "placeholder"
-  id: 0
-)
-
-
-
-
-
-
-
+placeholder_procedural_step = ProceduralStep.new
+placeholder_procedural_step.recipe_id = placeholder_recipe.id,
+placeholder_procedural_step.step_number = "0",
+placeholder_procedural_step.description = "placeholder",
+placeholder_procedural_step.id = 0
 
 category = Category.create(
   name: "Peanut Butter Cookies"
